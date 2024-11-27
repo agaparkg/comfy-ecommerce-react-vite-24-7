@@ -2,7 +2,7 @@ const formatPrice = (price) => {
   let formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-  }).format((price / 100).toFixed(2));
+  }).format((price / 10).toFixed(2));
 
   return formattedPrice;
 };
@@ -30,4 +30,4 @@ const setStorageItem = (name, item) => {
   localStorage.setItem(name, JSON.stringify(item));
 };
 
-export { formatPrice, getStorageItem, setStorageItem, formatCompany };
+export { formatCompany, formatPrice, getStorageItem, setStorageItem };
