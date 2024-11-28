@@ -1,4 +1,4 @@
-export const products = [
+export const data = [
   {
     id: "rec43w3ipXvP28vog",
     fields: {

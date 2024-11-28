@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
+import { useMyCustomContextApi } from "../hooks/custom";
 
 function NavBarLinks() {
+  const { showNavBar, setShowNavBar } = useMyCustomContextApi();
+
   return (
     <div>
-      <button className="toggle-nav">
+      <button onClick={() => setShowNavBar(!showNavBar)} className="toggle-nav">
         <i className="fa fa-bars"></i>
       </button>
       <ul className="nav-links">

@@ -1,10 +1,19 @@
+import { useMyCustomContextApi } from "../hooks/custom";
+
 function CheckoutModal() {
+  const { showCheckout, setShowCheckout } = useMyCustomContextApi();
+
+  const showCheckoutClass = showCheckout
+    ? "checkout-overlay show"
+    : "checkout-overlay";
   return (
-    // <div className="checkout-overlay show">
-    <div className="checkout-overlay">
+    <div className={showCheckoutClass}>
       <aside className="checkout">
         {/* close */}
-        <button className="checkout-close">
+        <button
+          onClick={() => setShowCheckout(!showCheckout)}
+          className="checkout-close"
+        >
           <i className="fa fa-times"></i>
         </button>
         <h3 className="checkout-error">

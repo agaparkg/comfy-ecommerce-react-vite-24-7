@@ -1,9 +1,12 @@
+import { useLocation } from "react-router-dom";
 import PageHero from "./PageHero";
 
 const About = () => {
+  const { pathname } = useLocation();
+
   return (
     <>
-      <PageHero path="/about" />
+      <PageHero path={pathname} />
 
       <section className="section section-center about-page">
         <div className="title">

@@ -1,19 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { products } from "../assets/products-data";
+import { useMyCustomContextApi } from "../hooks/custom";
 import SingleProduct from "./SingleProduct";
 
 function FeaturedProducts() {
-  const [isLoading, setIsLoading] = useState(false);
+  const { isLoading, setIsLoading, featuredProducts } = useMyCustomContextApi();
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(true);
     }, 500);
   }, []);
-
-  const renderFeaturedProducts = products.map((fp) => {
-    return <SingleProduct fp={fp} key={fp.id} />;
-  });
 
   return (
     <section className="section featured">
@@ -26,13 +23,14 @@ function FeaturedProducts() {
         {!isLoading ? (
           <h2 className="section-loading">loading...</h2>
         ) : (
-          renderFeaturedProducts
+          featuredProducts.map((fp) => (
+            <SingleProduct product={fp} key={fp.id} />
+          ))
         )}
       </div>
       <Link to="/products" className="btn">
         all products
       </Link>
-      <button className="btn">all products</button>
     </section>
   );
 }

@@ -1,25 +1,36 @@
-const SingleProduct = () => {
+import { useMyCustomContextApi } from "../hooks/custom";
+import { formatPrice } from "../utils/utils";
+
+const SingleProduct = ({ product }) => {
+  const { addProductToCart } = useMyCustomContextApi();
+
+  const {
+    id,
+    fields: { image, name, company, price },
+  } = product;
+
   return (
     <article className="product">
       <div className="product-container">
-        <img
-          src="https://course-api.com/images/store/product-1.jpeg"
-          className="product-img img"
-          alt=""
-        />
+        <img src={image[0].url} className="product-img img" alt="" />
 
         <div className="product-icons">
           <button className="product-icon">
             <i className="fa fa-search"></i>
           </button>
-          <button className="product-cart-btn product-icon">
+          <button
+            onClick={() => addProductToCart(product)}
+            className="product-cart-btn product-icon"
+          >
             <i className="fa fa-shopping-cart"></i>
           </button>
         </div>
       </div>
       <footer>
-        <p className="product-name">accent chair caressa</p>
-        <h4 className="product-price">999.00</h4>
+        <p className="product-name">
+          {name} ({company})
+        </p>
+        <h4 className="product-price">{formatPrice(price)}</h4>
       </footer>
     </article>
   );

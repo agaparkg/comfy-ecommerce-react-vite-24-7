@@ -1,31 +1,55 @@
+import { Link } from "react-router-dom";
+import { useMyCustomContextApi } from "../hooks/custom";
+
 function SideBar() {
+  const { showNavBar, setShowNavBar } = useMyCustomContextApi();
+
+  const showNavbarClass = showNavBar
+    ? "sidebar-overlay show"
+    : "sidebar-overlay";
+
   return (
-    // <div className="sidebar-overlay show">
-    <div className="sidebar-overlay">
+    <div className={showNavbarClass}>
+      {/* <div className="sidebar-overlay"> */}
       <aside className="sidebar">
         {/* close */}
-        <button className="sidebar-close">
+        <button
+          onClick={() => setShowNavBar(!showNavBar)}
+          className="sidebar-close"
+        >
           <i className="fa fa-times"></i>
         </button>
         {/* links */}
         <ul className="sidebar-links">
           <li>
-            <a href="#" className="sidebar-link">
+            <Link
+              to="/"
+              onClick={() => setShowNavBar(!showNavBar)}
+              className="sidebar-link"
+            >
               <i className="fa fa-home fa-fw"></i>
               home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="sidebar-link">
+            <Link
+              to="/products"
+              onClick={() => setShowNavBar(!showNavBar)}
+              className="sidebar-link"
+            >
               <i className="fa fa-couch fa-fw"></i>
               products
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="sidebar-link">
+            <Link
+              to="about"
+              onClick={() => setShowNavBar(!showNavBar)}
+              className="sidebar-link"
+            >
               <i className="fa fa-book fa-fw"></i>
               about
-            </a>
+            </Link>
           </li>
         </ul>
       </aside>

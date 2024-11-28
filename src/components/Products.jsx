@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { products } from "../assets/products-data";
+import { useLocation } from "react-router-dom";
 import PageHero from "./PageHero";
-import SingleProduct from "./SingleProduct";
 
 function Products() {
+  const { pathname } = useLocation();
+
   const [priceInputVal, setPriceInputVal] = useState(50);
   const [searchVal, setSearchVal] = useState("");
   const [companyName, setCompanyName] = useState("all");
@@ -24,7 +25,7 @@ function Products() {
 
   return (
     <>
-      <PageHero path="/products" />
+      <PageHero path={pathname} />
       <section className="products">
         {/* filters */}
         <div className="filters">
@@ -70,8 +71,8 @@ function Products() {
         </div>
         {/* products */}
         <div className="products-container">
-          <SingleProduct fp={products[0]} key={products[0].id} />
-          <SingleProduct fp={products[1]} key={products[1].id} />
+          {/* <SingleProduct fp={products[0]} key={products[0].id} /> */}
+          {/* <SingleProduct fp={products[1]} key={products[1].id} /> */}
           <h3 className="filter-error">
             sorry, no products matched your search
           </h3>
