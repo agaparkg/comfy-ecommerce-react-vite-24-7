@@ -1,13 +1,45 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useMyCustomContextApi } from "../hooks/custom";
 import PageHero from "./PageHero";
+import SingleProduct from "./SingleProduct";
 
 function Products() {
   const { pathname } = useLocation();
+  const { products } = useMyCustomContextApi();
 
-  const [priceInputVal, setPriceInputVal] = useState(50);
+  const [priceInputVal, setPriceInputVal] = useState(500);
   const [searchVal, setSearchVal] = useState("");
   const [companyName, setCompanyName] = useState("all");
+
+  const companies = ["all", ...new Set(products.map((p) => p.fields.company))];
+
+  let filteredProducts = products.filter((p) => {
+    return (p.fields.price / 10).toFixed(2) < Number(priceInputVal);
+  });
+
+  // Filter by company name click or keep "all"
+  // if (companyName === "all") {
+  //   filteredProducts = filteredProducts;
+  // } else {
+  //   filteredProducts = filteredProducts.filter(
+  //     (fp) => fp.fields.company === companyName
+  //   );
+  // }
+
+  filteredProducts =
+    companyName === "all"
+      ? filteredProducts
+      : filteredProducts.filter((fp) => fp.fields.company === companyName);
+
+  // Filter by company name search input
+  if (searchVal.trim()) {
+    filteredProducts = filteredProducts.filter((fp) => {
+      let name = fp.fields.company;
+      name = name.toLowerCase();
+      return name.startsWith(searchVal);
+    });
+  }
 
   const handlePriceChange = (e) => {
     const value = e.target.value;
@@ -49,10 +81,20 @@ function Products() {
             {/* companies list */}
             <h4>Company</h4>
             <article className="companies">
-              <button className="company-btn active">ikea</button>
-              <button className="company-btn">marcos</button>
-              <button className="company-btn">caressa</button>
               {/* "company-btn active" : "company-btn" */}
+              {companies.map((c, ind) => {
+                const cBtnClass =
+                  c === companyName ? "company-btn active" : "company-btn";
+                return (
+                  <button
+                    key={ind}
+                    onClick={() => changeCompanyProducts(c)}
+                    className={cBtnClass}
+                  >
+                    {c}
+                  </button>
+                );
+              })}
             </article>
             {/* price */}
             <h4>Price</h4>
@@ -62,7 +104,7 @@ function Products() {
                 className="price-filter"
                 min="0"
                 value={priceInputVal}
-                max="100"
+                max="500"
                 onChange={handlePriceChange}
               />
             </form>
@@ -71,11 +113,15 @@ function Products() {
         </div>
         {/* products */}
         <div className="products-container">
-          {/* <SingleProduct fp={products[0]} key={products[0].id} /> */}
-          {/* <SingleProduct fp={products[1]} key={products[1].id} /> */}
-          <h3 className="filter-error">
-            sorry, no products matched your search
-          </h3>
+          {filteredProducts.length !== 0 ? (
+            filteredProducts.map((fp) => (
+              <SingleProduct product={fp} key={fp.id} />
+            ))
+          ) : (
+            <h3 className="filter-error">
+              sorry, no products matched your search
+            </h3>
+          )}
         </div>
       </section>
     </>
