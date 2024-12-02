@@ -1,14 +1,14 @@
 import { useRoutes } from "react-router-dom";
+import About from "../components/About";
+import Cart from "../components/Cart";
+import CheckoutModal from "../components/CheckoutModal";
+import ErrorPage from "../components/ErrorPage";
+import Home from "../components/Home";
+import NavBar from "../components/NavBar";
+import ProductDetails from "../components/ProductDetails";
+import Products from "../components/Products";
+import SideBar from "../components/SideBar";
 import "./App.css";
-import About from "./components/About";
-import Cart from "./components/Cart";
-import CheckoutModal from "./components/CheckoutModal";
-import ErrorPage from "./components/ErrorPage";
-import Home from "./components/Home";
-import NavBar from "./components/NavBar";
-import ProductDetails from "./components/ProductDetails";
-import Products from "./components/Products";
-import SideBar from "./components/SideBar";
 
 function App() {
   const element = useRoutes([

@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
+import Cart from "../components/Cart";
+import CheckoutModal from "../components/CheckoutModal";
+import NavBar from "../components/NavBar";
+import SideBar from "../components/SideBar";
 import "./App.css";
-import Cart from "./components/Cart";
-import CheckoutModal from "./components/CheckoutModal";
-import NavBar from "./components/NavBar";
-import SideBar from "./components/SideBar";
 
 function App() {
   return (
