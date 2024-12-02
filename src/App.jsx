@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import About from "./components-useImmerReducer/About";
-import Cart from "./components-useImmerReducer/Cart";
-import CheckoutModal from "./components-useImmerReducer/CheckoutModal";
-import ErrorPage from "./components-useImmerReducer/ErrorPage";
-import Home from "./components-useImmerReducer/Home";
-import NavBar from "./components-useImmerReducer/NavBar";
-import ProductDetails from "./components-useImmerReducer/ProductDetails";
-import Products from "./components-useImmerReducer/Products";
-import SideBar from "./components-useImmerReducer/SideBar";
+import About from "./components/About";
+import Cart from "./components/Cart";
+import CheckoutModal from "./components/CheckoutModal";
+import ErrorPage from "./components/ErrorPage";
+import Home from "./components/Home";
+import NavBar from "./components/NavBar";
+import ProductDetails from "./components/ProductDetails";
+import Products from "./components/Products";
+import SideBar from "./components/SideBar";
 
 function App() {
   return (
