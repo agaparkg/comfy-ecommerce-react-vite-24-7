@@ -63,16 +63,21 @@ const GlobalContextProvider = ({ children }) => {
       });
     });
   };
-  const decreaseCartProductCount = (product) => {
-    setCartProducts((prevCartProducts) => {
-      return prevCartProducts.map((pCP) => {
-        if (pCP.id === product.id) {
-          return { ...pCP, count: pCP.count - 1 };
-        }
 
-        return { ...pCP };
+  const decreaseCartProductCount = (product) => {
+    if (product.count <= 1) {
+      removeProductFromCart(product);
+    } else {
+      setCartProducts((prevCartProducts) => {
+        return prevCartProducts.map((pCP) => {
+          if (pCP.id === product.id) {
+            return { ...pCP, count: pCP.count - 1 };
+          }
+
+          return { ...pCP };
+        });
       });
-    });
+    }
   };
 
   useEffect(() => {
