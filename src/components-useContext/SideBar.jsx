@@ -1,10 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setShowNavBar } from "../redux/comfySlice";
+import { useMyCustomContextApi } from "../hooks/custom";
 
 function SideBar() {
-  const dispatch = useDispatch();
-  const showNavBar = useSelector((state) => state.comfyState.showNavBar);
+  const { showNavBar, setShowNavBar } = useMyCustomContextApi();
 
   const showNavbarClass = showNavBar
     ? "sidebar-overlay show"
@@ -16,7 +14,7 @@ function SideBar() {
       <aside className="sidebar">
         {/* close */}
         <button
-          onClick={() => dispatch(setShowNavBar())}
+          onClick={() => setShowNavBar(!showNavBar)}
           className="sidebar-close"
         >
           <i className="fa fa-times"></i>
@@ -26,7 +24,7 @@ function SideBar() {
           <li>
             <Link
               to="/"
-              onClick={() => dispatch(setShowNavBar())}
+              onClick={() => setShowNavBar(!showNavBar)}
               className="sidebar-link"
             >
               <i className="fa fa-home fa-fw"></i>
@@ -36,7 +34,7 @@ function SideBar() {
           <li>
             <Link
               to="/products"
-              onClick={() => dispatch(setShowNavBar())}
+              onClick={() => setShowNavBar(!showNavBar)}
               className="sidebar-link"
             >
               <i className="fa fa-couch fa-fw"></i>
@@ -46,7 +44,7 @@ function SideBar() {
           <li>
             <Link
               to="about"
-              onClick={() => dispatch(setShowNavBar())}
+              onClick={() => setShowNavBar(!showNavBar)}
               className="sidebar-link"
             >
               <i className="fa fa-book fa-fw"></i>

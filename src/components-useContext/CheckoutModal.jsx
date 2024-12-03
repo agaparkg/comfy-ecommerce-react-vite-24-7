@@ -1,9 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setShowCheckout } from "../redux/comfySlice";
+import { useMyCustomContextApi } from "../hooks/custom";
 
 function CheckoutModal() {
-  const showCheckout = useSelector((state) => state.comfyState.showCheckout);
-  const dispatch = useDispatch();
+  const { showCheckout, setShowCheckout } = useMyCustomContextApi();
 
   const showCheckoutClass = showCheckout
     ? "checkout-overlay show"
@@ -13,7 +11,7 @@ function CheckoutModal() {
       <aside className="checkout">
         {/* close */}
         <button
-          onClick={() => dispatch(setShowCheckout())}
+          onClick={() => setShowCheckout(!showCheckout)}
           className="checkout-close"
         >
           <i className="fa fa-times"></i>

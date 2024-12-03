@@ -1,15 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App.jsx";
-import GlobalContextProvider from "./context/GlobalContextProvider.jsx";
+import store from "./redux/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
-      <GlobalContextProvider>
+      <Provider store={store}>
         <App />
-      </GlobalContextProvider>
+      </Provider>
     </Router>
   </React.StrictMode>
 );

@@ -1,19 +1,14 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setIsLoading } from "../redux/comfySlice";
+import { useMyCustomContextApi } from "../hooks/custom";
 import SingleProduct from "./SingleProduct";
 
 function FeaturedProducts() {
-  const isLoading = useSelector((state) => state.comfyState.isLoading);
-  const featuredProducts = useSelector(
-    (state) => state.comfyState.featuredProducts
-  );
-  const dispatch = useDispatch();
+  const { isLoading, setIsLoading, featuredProducts } = useMyCustomContextApi();
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(setIsLoading(true));
+      setIsLoading(true);
     }, 500);
   }, []);
 

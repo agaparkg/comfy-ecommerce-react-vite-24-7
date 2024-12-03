@@ -1,20 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setShowCart } from "../redux/comfySlice";
+import { useMyCustomContextApi } from "../hooks/custom";
 import Footer from "./Footer";
 import SingleCartProduct from "./SingleCartProduct";
 
 function Cart() {
-  const cartProducts = useSelector((state) => state.comfyState.cartProducts);
-  const showCart = useSelector((state) => state.comfyState.showCart);
-
-  const dispatch = useDispatch();
+  const { showCart, setShowCart, cartProducts } = useMyCustomContextApi();
 
   const showCartClass = showCart ? "cart-overlay show" : "cart-overlay";
 
   return (
     <div className={showCartClass}>
       <aside className="cart">
-        <button onClick={() => dispatch(setShowCart())} className="cart-close">
+        <button onClick={() => setShowCart(!showCart)} className="cart-close">
           <i className="fa fa-times"></i>
         </button>
         <header>

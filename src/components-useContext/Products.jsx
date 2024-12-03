@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { useMyCustomContextApi } from "../hooks/custom";
 import PageHero from "./PageHero";
 import SingleProduct from "./SingleProduct";
 
 function Products() {
   const { pathname } = useLocation();
-  const products = useSelector((state) => state.comfyState.products);
+  const { products } = useMyCustomContextApi();
 
   const [priceInputVal, setPriceInputVal] = useState(500);
   const [searchVal, setSearchVal] = useState("");

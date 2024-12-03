@@ -1,12 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addProductToCart } from "../redux/comfySlice";
+import { useMyCustomContextApi } from "../hooks/custom";
 import { formatPrice } from "../utils/utils";
 import PageHero from "./PageHero";
 
 const ProductDetails = () => {
-  const products = useSelector((state) => state.comfyState.products);
-  const dispatch = useDispatch();
+  const { products, addProductToCart } = useMyCustomContextApi();
 
   let { id } = useParams();
 
@@ -50,12 +48,7 @@ const ProductDetails = () => {
                 venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki
                 trust fund hashtag kinfolk microdosing gochujang live-edge
               </p>
-              <button
-                onClick={() => dispatch(addProductToCart(product))}
-                className="addToCartBtn btn"
-              >
-                add to cart
-              </button>
+              <button className="addToCartBtn btn">add to cart</button>
             </div>
           </article>
         </div>

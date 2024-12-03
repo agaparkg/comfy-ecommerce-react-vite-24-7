@@ -1,13 +1,12 @@
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { setShowNavBar } from "../redux/comfySlice";
+import { useMyCustomContextApi } from "../hooks/custom";
 
 function NavBarLinks() {
-  const dispatch = useDispatch();
+  const { showNavBar, setShowNavBar } = useMyCustomContextApi();
 
   return (
     <div>
-      <button onClick={() => dispatch(setShowNavBar())} className="toggle-nav">
+      <button onClick={() => setShowNavBar(!showNavBar)} className="toggle-nav">
         <i className="fa fa-bars"></i>
       </button>
       <ul className="nav-links">

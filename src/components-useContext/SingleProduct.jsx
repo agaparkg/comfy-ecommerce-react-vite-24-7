@@ -1,10 +1,8 @@
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { addProductToCart } from "../redux/comfySlice";
+import { useMyCustomContextApi } from "../hooks/custom";
 import { formatPrice } from "../utils/utils";
 
 const SingleProduct = ({ product }) => {
-  const dispatch = useDispatch();
+  const { addProductToCart } = useMyCustomContextApi();
 
   const {
     id,
@@ -17,11 +15,11 @@ const SingleProduct = ({ product }) => {
         <img src={image[0].url} className="product-img img" alt="" />
 
         <div className="product-icons">
-          <Link to={`/products/single/${id}`} className="product-icon">
+          <button className="product-icon">
             <i className="fa fa-search"></i>
-          </Link>
+          </button>
           <button
-            onClick={() => dispatch(addProductToCart(product))}
+            onClick={() => addProductToCart(product)}
             className="product-cart-btn product-icon"
           >
             <i className="fa fa-shopping-cart"></i>

@@ -1,13 +1,12 @@
-import { useDispatch } from "react-redux";
-import {
-  decreaseCartProductCount,
-  increaseCartProductCount,
-  removeProductFromCart,
-} from "../redux/comfySlice";
+import { useMyCustomContextApi } from "../hooks/custom";
 import { formatPrice } from "../utils/utils";
 
 const SingleCartProduct = ({ product }) => {
-  const dispatch = useDispatch();
+  const {
+    removeProductFromCart,
+    increaseCartProductCount,
+    decreaseCartProductCount,
+  } = useMyCustomContextApi();
 
   const {
     id,
@@ -22,7 +21,7 @@ const SingleCartProduct = ({ product }) => {
         <h4 className="cart-item-name">{name}</h4>
         <p className="cart-item-price">{formatPrice(price)}</p>
         <button
-          onClick={() => dispatch(removeProductFromCart(product))}
+          onClick={() => removeProductFromCart(product)}
           className="cart-item-remove-btn"
         >
           remove
@@ -31,14 +30,14 @@ const SingleCartProduct = ({ product }) => {
 
       <div>
         <button
-          onClick={() => dispatch(increaseCartProductCount(product))}
+          onClick={() => increaseCartProductCount(product)}
           className="cart-item-increase-btn"
         >
           <i className="fas fa-chevron-up"></i>
         </button>
         <p className="cart-item-amount">{count}</p>
         <button
-          onClick={() => dispatch(decreaseCartProductCount(product))}
+          onClick={() => decreaseCartProductCount(product)}
           className="cart-item-decrease-btn"
         >
           <i className="fas fa-chevron-down"></i>
