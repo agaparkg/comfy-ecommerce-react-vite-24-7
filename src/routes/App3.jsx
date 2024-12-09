@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import Cart from "../components/Cart";
-import CheckoutModal from "../components/CheckoutModal";
-import NavBar from "../components/NavBar";
-import SideBar from "../components/SideBar";
+import Cart from "../components-redux/Cart";
+import CheckoutModal from "../components-redux/CheckoutModal";
+import NavBar from "../components-redux/NavBar";
+import SideBar from "../components-redux/SideBar";
 import "./App.css";
 
 function App() {

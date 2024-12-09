@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import About from "./components/About";
-import Cart from "./components/Cart";
-import CheckoutModal from "./components/CheckoutModal";
-import ErrorPage from "./components/ErrorPage";
-import Home from "./components/Home";
-import NavBar from "./components/NavBar";
-import ProductDetails from "./components/ProductDetails";
-import Products from "./components/Products";
-import SideBar from "./components/SideBar";
+import About from "./components-redux/About";
+import Cart from "./components-redux/Cart";
+import CheckoutModal from "./components-redux/CheckoutModal";
+import ErrorPage from "./components-redux/ErrorPage";
+import Home from "./components-redux/Home";
+import NavBar from "./components-redux/NavBar";
+import ProductDetails from "./components-redux/ProductDetails";
+import Products from "./components-redux/Products";
+import SideBar from "./components-redux/SideBar";
 
 function App() {
   return (

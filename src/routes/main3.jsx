@@ -7,11 +7,11 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from "../App.jsx";
-import About from "../components/About.jsx";
-import ErrorPage from "../components/ErrorPage.jsx";
-import Home from "../components/Home.jsx";
-import ProductDetails from "../components/ProductDetails.jsx";
-import Products from "../components/Products.jsx";
+import About from "../components-redux/About.jsx";
+import ErrorPage from "../components-redux/ErrorPage.jsx";
+import Home from "../components-redux/Home.jsx";
+import ProductDetails from "../components-redux/ProductDetails.jsx";
+import Products from "../components-redux/Products.jsx";
 import GlobalContextProvider from "../context/GlobalContextProvider.jsx";
 
 const router = createBrowserRouter(
